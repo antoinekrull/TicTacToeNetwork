@@ -36,19 +36,9 @@ public class TicTacToeForm extends JFrame {
         menuBar = new JMenuBar();
         menu = new JMenu("File");
         newGame = new JMenuItem("New Game");
-        newGame.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                resetBoard();
-            }
-        });
+        newGame.addActionListener(e -> resetBoard());
         quit = new JMenuItem("Quit");
-        quit.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.exit(0);
-            }
-        });
+        quit.addActionListener(e -> System.exit(0));
         menu.add(newGame);
         menu.add(quit);
         menuBar.add(menu);
