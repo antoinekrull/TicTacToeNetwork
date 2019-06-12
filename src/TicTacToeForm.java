@@ -54,8 +54,30 @@ public class TicTacToeForm extends JFrame {
             }
         }
     }
-    private void initializeBoard(){}
-    private void togglePlayer(){}
+    private void initializeBoard(){
+        for(int i = 0; i < 3; i++){
+            for(int j = 0; j < 3; j++){
+                JButton btn = new JButton();
+                btn.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 100));
+                board[i][j] = btn;
+                btn.addActionListener(e -> {
+                    if(((JButton)e.getSource()).getText().equals("") && hasWinner == false){
+                        btn.setText(currentPlayer);
+                        hasWinner();
+                        togglePlayer();
+                    }
+                });
+                pane.add(btn);
+            }
+        }
+    }
+    private void togglePlayer(){
+        if(currentPlayer.equals("x")){
+            currentPlayer = "o";
+        }
+        else
+            currentPlayer = "x";
+    }
     private void hasWinner(){
         if(board[0][0].getText().equals(currentPlayer) && board[1][0].getText().equals(currentPlayer) && board[2][0].getText().equals(currentPlayer)){
             JOptionPane.showMessageDialog(null, "Player " + currentPlayer + " has won.");
